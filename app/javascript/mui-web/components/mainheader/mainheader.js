@@ -19,6 +19,26 @@ const settings = ['Profile', 'Managed Accounts']
 
 const MainHeader = (props) => {
 	const { title = "Page Header" } = props
+
+	const [anchorElNav, setAnchorElNav] = React.useState(null)
+	const [anchorElUser, setAnchorElUser] = React.useState(null)
+
+	const handleOpenNavMenu = (event) => {
+		setAnchorElNav(event.currentTarget)
+	}
+
+	const handleOpenUserMenu = (event) => {
+		setAnchorElUser(event.currentTarget)
+	}
+
+	const handleCloseNavMenu = () => {
+		setAnchorElNav(null)
+	}
+
+	const handleCloseUserMenu = () => {
+		setAnchorElUser(null)
+	}
+
 	return (
 		<ThemeProvider theme={mainHeaderTheme}>
 			<Box sx={{ flexGrow: 1 }}>
@@ -28,9 +48,9 @@ const MainHeader = (props) => {
 							<Box
 								component="img"
 								sx={{
-								display: { xs: 'none', md: 'flex' },
-								width: 25,
-								margin: '0 10px 0 0'
+									display: { xs: 'none', md: 'flex' },
+									width: 25,
+									marginRight: 1
 								}}
 								alt="Dash Icon"
 								src="/assets/dash-logo.svg"
@@ -38,24 +58,22 @@ const MainHeader = (props) => {
 
 							<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
 								{pages.map(page => (
-								<Button
-									key={page}
-									sx={{ my: 2, color: 'white', display: 'block', textTransform: 'unset' }}
-									>
-									{page}
-								</Button>
+									<Button key={page}>
+										{page}
+									</Button>
 								))}
 							</Box>
 
 							<Box sx={{ flexGrow: 0 }}>
 								<Tooltip title="Open settings">
-									<Button sx={{ my: 2, color: 'white', display: 'block', textTransform: 'unset' }}>
+									<Button onClick={handleOpenUserMenu}>
 										Account
 									</Button>
 								</Tooltip>
 								<Menu
-									sx={{ mt: '45px' }}
+									sx={{ mt: 4 }}
 									id="menu-appbar"
+									anchorEl={anchorElUser}
 									anchorOrigin={{
 										vertical: 'top',
 										horizontal: 'right',
@@ -65,10 +83,11 @@ const MainHeader = (props) => {
 										vertical: 'top',
 										horizontal: 'right',
 									}}
-									open={false}
+									open={Boolean(anchorElUser)}
+									onClose={handleCloseUserMenu}
 								>
 									{settings.map((setting) => (
-										<MenuItem key={setting}>
+										<MenuItem key={setting} onClick={handleCloseUserMenu}>
 											<Typography textAlign="center">{setting}</Typography>
 										</MenuItem>
 									))}

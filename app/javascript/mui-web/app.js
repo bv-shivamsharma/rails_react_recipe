@@ -1,13 +1,15 @@
 import React from 'react'
-import './app.scss'
+import { ThemeProvider } from '@mui/material/styles'
+import { defaultAppTheme } from './theme/sstheme'
 import MainHeader from './components/mainheader'
 import SiteDetails from './pages/sitedetails'
+import './app.scss'
 
 const App = (props) => {
-	return  <React.Fragment>
+	return <ThemeProvider theme={defaultAppTheme}>
 		<MainHeader />
 		<SiteDetails />
-	</React.Fragment>
+	</ThemeProvider>
 }
 
 export default App
