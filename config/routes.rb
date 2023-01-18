@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 	
 	match "/app/*foo" => 'dash#mui', via: [:get, :post]
 	match "/app/mui" => 'dash#mui', via: [:get, :post]
+	match "/app/semantic" => 'dash#semantic', via: [:get, :post]
+
+	root :to => 'dash#semantic'
 end
