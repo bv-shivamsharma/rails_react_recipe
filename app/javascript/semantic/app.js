@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu, Segment, Image } from 'semantic-ui-react'
+import { Container, Menu, Segment, Image } from 'semantic-ui-react'
 import './app.scss'
 
 const MenuExampleInvertedSegment = () => {
@@ -10,24 +10,21 @@ const MenuExampleInvertedSegment = () => {
 
 	return (
 		<Menu className="main-header" secondary background="pink">
-			<Menu.Item>
-				<img alt="logo" src='/assets/dash-logo.svg' width={25} />
-			</Menu.Item>
-			<Menu.Item
-				name='home'
-				active={activeItem === 'home'}
-				onClick={handleItemClick}
-			/>
-			<Menu.Item
-				name='messages'
-				active={activeItem === 'messages'}
-				onClick={handleItemClick}
-			/>
-			<Menu.Item
-				name='friends'
-				active={activeItem === 'friends'}
-				onClick={handleItemClick}
-			/>
+			<Container>
+				<Menu.Item>
+					<img alt="logo" className="bv-logo" src='/assets/dash-logo.svg' width={25} />
+				</Menu.Item>
+				<Menu.Item
+					name='Dashboard'
+					active={activeItem === 'dashboard'}
+					onClick={handleItemClick}
+				/>
+				<Menu.Item
+					name='Sites'
+					active={activeItem === 'sites'}
+					onClick={handleItemClick}
+				/>
+			</Container>
 		</Menu>
 	)
 }

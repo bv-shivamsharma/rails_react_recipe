@@ -2,10 +2,27 @@ body {
 	margin: unset;
 }
 
+.ui.container.app-container {
+	background: #182d4f;
+}
+
 .ui.secondary.menu.main-header {
 	background: #182d4f;
 
+	.ui.container {
+		width: 1536px;
+	}
+
 	.item {
+		color: #fff;
+		margin: 10px 0;
+
+		img.bv-logo {
+			width: 25px;
+		}
+	}
+
+	.item:hover {
 		color: #fff;
 	}
 }
