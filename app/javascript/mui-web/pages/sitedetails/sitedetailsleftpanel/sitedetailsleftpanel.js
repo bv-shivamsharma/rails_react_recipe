@@ -9,9 +9,11 @@ import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
+import { styled } from '@mui/system'
+import { ThemeProvider } from '@mui/material/styles'
+import { customButtonTheme } from './../../../theme/sstheme'
 
 const SiteDetailsLeftPanel = (props) => {
-
 	const manageCard = (iconText = `S`, text = `Sites`, extraData) => {
 		return <Paper elevation={3} sx={{ p: 1 }}>
 			<Stack direction="row" spacing={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -29,7 +31,11 @@ const SiteDetailsLeftPanel = (props) => {
 						Active
 					</Typography>
 				</Box>
-				<Button variant="contained">Manage</Button>
+				<ThemeProvider theme={customButtonTheme}>
+					<Button variant="contained">
+						Manage
+					</Button>
+				</ThemeProvider>
 			</Stack>
 		</Paper>
 	}

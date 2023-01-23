@@ -47,3 +47,11 @@ export const mainHeaderTheme = createTheme({
 		}
 	}
 })
+
+export const customButtonTheme = createTheme({
+	palette: {
+		primary: {
+			main: "#ff0000"
+		}
+	}
+})
